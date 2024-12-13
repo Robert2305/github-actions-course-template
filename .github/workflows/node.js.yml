@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - name: Set NODE_OPTIONS to allow legacy OpenSSL provider
-      run: echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
-
-    - run: npm run build
+    - name: Run build with legacy OpenSSL provider
+      run: npm run build
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
     - run: npm test
