@@ -11,14 +11,13 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-  steps:
-    -uses: actions/checkout@v2
-    -name: npm install and build webpack
-    run:
-      npm install
-      npm run build
+     runs-on: ubuntu-latest
+     steps:
+       - uses: actions/checkout@v2
+       - name: npm install and build webpack
+         run: |
+          npm install
+          npm run build
 
   test:
     runs-on: ubuntu-latest
@@ -35,8 +34,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    -name: npm install, and test
-    run:
+    - name: npm install, and test
+      run:
        npm install
        npm test
 env:
